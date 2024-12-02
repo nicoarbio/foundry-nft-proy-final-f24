@@ -8,7 +8,7 @@
 > 1. `forge --version`
 > 2. `forge build --sizes`
 > 3. `forge test -vvv`
-> En caso de no tener errores en ninguno de los pasos anteriores, se podrá ver el estado aprobado (:heavy_check_mark:) en el commit.
+> En caso de no tener errores en ninguno de los pasos anteriores, se podrá ver el estado aprobado ( :heavy_check_mark: ) en el commit.
 
 > [!NOTE]
 > Este workflow de GitHub Actions es generado automáticamente por foundry al ejecutar `forge init` y se encuentra en el archivo `.github/workflows/main.yml`.
