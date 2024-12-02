@@ -6,9 +6,8 @@
 > Este proyecto trae configurado un GitHub Action que se ejecuta por cada push en la rama `main`.
 > Por cada ejecución se ejecuta:
 > 1. `forge --version`
-> 2. `forge fmt --check`
-> 3. `forge build --sizes`
-> 4. `forge test -vvv`
+> 2. `forge build --sizes`
+> 3. `forge test -vvv`
 > En caso de no tener errores en ninguno de los pasos anteriores, se podrá ver el estado aprobado (:heavy_check_mark:) en el commit.
 
 > [!NOTE]
