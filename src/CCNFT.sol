@@ -209,7 +209,7 @@ contract CCNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
         }
 
         // Transferencia de tarifa de comercio (calculada como un porcentaje del valor del NFT) del comprador al feesCollector.
-        if (!fundsToken.transferFrom(_msgSender(), feesCollector, tokenSale.price * buyFee / 10000)) {
+        if (!fundsToken.transferFrom(_msgSender(), feesCollector, tokenSale.price * tradeFee / 10000)) {
             revert("No se han podido transferir la tarifa necesaria"); // Incluir un mensaje de falla.
         }
 
