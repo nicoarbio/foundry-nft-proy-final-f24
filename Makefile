@@ -48,5 +48,5 @@ setFundsCollector:
 # CCNFT#buy
 buyNFT:
 	@echo "Buying NFT"
-	@cast send ${CONTRACT_CCNFT_SOJA} "buy(uint256, uint256)" 23000, 3 $(CONFIG_SEPOLIA)
-	@cast send ${CONTRACT_CCNFT_TRIGO} "buy(uint256, uint256)" 56000, 7 $(CONFIG_SEPOLIA)
+	@cast send ${CONTRACT_CCNFT_SOJA} "buy(uint256, uint256)" 23000 3 $(CONFIG_SEPOLIA)
+	@cast send ${CONTRACT_CCNFT_TRIGO} "buy(uint256, uint256)" 56000 7 $(CONFIG_SEPOLIA)

@@ -46,4 +46,4 @@ jobs:
 
       - name: Buy NFT
         run: |
-          cast send ${{ inputs.ccnft_contract_address }} "buy(uint256, uint256)" ${{ inputs.nft_price }}, ${{ inputs.nft_amount }} $CONFIG_SEPOLIA
+          cast send ${{ inputs.ccnft_contract_address }} "buy(uint256, uint256)" ${{ inputs.nft_price }} ${{ inputs.nft_amount }} $CONFIG_SEPOLIA

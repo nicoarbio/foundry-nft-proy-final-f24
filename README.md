@@ -13,8 +13,9 @@
 > [!NOTE]
 > Este workflow de GitHub Actions es generado automáticamente por foundry al ejecutar `forge init` y se encuentra en el archivo `.github/workflows/main.yml`.
 
-#### Notas: Comandos Utilizados
-- `forge init --force`
-- `forge install OpenZeppelin/openzeppelin-contracts@v4.5.0`
-- `source ./.env`
-- `make <función del Makefile>`: `make deployAndVerify`, `make setCanBuy`
+## Direcciones de contratos
+- CriptoSoja: `0xCFc50A7A3908E01D96BB1A7cF6B69ca8867F8f2f`
+- CriptoTrigo: `0x95B0F620AE4CF222FE9394ca25e588A858b855f5`
+- BUSD: `0x3eC35E7e0aD2861D149Dc5d0DF54Cd64919798d4`
+- FeeCollector: `0x667762F969187B5c7817D6Dc92456214962d831B`
+- FundsCollector: `0x667762F969187B5c7817D6Dc92456214962d831B`
