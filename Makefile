@@ -1,8 +1,8 @@
 -include .env
 
 # Direcciones de los contratos deployados
-CONTRACT_CCNFT_SOJA := 0x0000
-CONTRACT_CCNFT_TRIGO := 0x0000
+CONTRACT_CCNFT_SOJA := 0x00000
+CONTRACT_CCNFT_TRIGO := 0x00000
 CONTRACT_BUSD := 0x0d1AD9fF2116325230333190a6dE56fD96289818
 FEES_COLLECTOR := 0x667762F969187B5c7817D6Dc92456214962d831B
 FUNDS_COLLECTOR := 0x9B9856B02F542778C20fC531ffBb7e16042CFbE3
@@ -45,21 +45,21 @@ setFundsCollector:
 	@cast send ${CONTRACT_CCNFT_SOJA} "setFundsCollector(address)" ${FUNDS_COLLECTOR} $(CONFIG_SEPOLIA)
 	@cast send ${CONTRACT_CCNFT_TRIGO} "setFundsCollector(address)" ${FUNDS_COLLECTOR} $(CONFIG_SEPOLIA)
 
-addValidValues:
-	@echo "Adding Valid Values"
-	@cast send ${CONTRACT_CCNFT_SOJA} "addValidValues(uint256)" 23000 $(CONFIG_SEPOLIA)
-	@cast send ${CONTRACT_CCNFT_TRIGO} "addValidValues(uint256)" 56000 $(CONFIG_SEPOLIA)
-
 setRequiredVars:
 	@echo "Setting Required Vars"
-	@cast send ${CONTRACT_CCNFT_SOJA} "setMaxValueToRaise(uint256)" 10000000 $(CONFIG_SEPOLIA)
-	@cast send ${CONTRACT_CCNFT_TRIGO} "setMaxValueToRaise(uint256)" 10000000 $(CONFIG_SEPOLIA)
+	@cast send ${CONTRACT_CCNFT_SOJA} "setMaxValueToRaise(uint256)" 100000000000000000000000000 $(CONFIG_SEPOLIA)
+	@cast send ${CONTRACT_CCNFT_TRIGO} "setMaxValueToRaise(uint256)" 100000000000000000000000000 $(CONFIG_SEPOLIA)
 	@cast send ${CONTRACT_CCNFT_SOJA} "setCanBuy(bool)" true $(CONFIG_SEPOLIA)
 	@cast send ${CONTRACT_CCNFT_TRIGO} "setCanBuy(bool)" true $(CONFIG_SEPOLIA)
 	@cast send ${CONTRACT_CCNFT_SOJA} "setMaxBatchCount(uint16)" 10 $(CONFIG_SEPOLIA)
 	@cast send ${CONTRACT_CCNFT_TRIGO} "setMaxBatchCount(uint16)" 10 $(CONFIG_SEPOLIA)
 	@cast send ${CONTRACT_CCNFT_SOJA} "setBuyFee(uint16)" 15 $(CONFIG_SEPOLIA)
 	@cast send ${CONTRACT_CCNFT_TRIGO} "setBuyFee(uint16)" 15 $(CONFIG_SEPOLIA)
+
+addValidValues:
+	@echo "Adding Valid Values"
+	@cast send ${CONTRACT_CCNFT_SOJA} "addValidValues(uint256)" 23000000000000000000000 $(CONFIG_SEPOLIA)
+	@cast send ${CONTRACT_CCNFT_TRIGO} "addValidValues(uint256)" 56000000000000000000000 $(CONFIG_SEPOLIA)
 
 approveFunds:
 	@echo "Approving Funds"
@@ -69,5 +69,5 @@ approveFunds:
 # CCNFT#buy
 buyNFT:
 	@echo "Buying NFT"
-	@cast send ${CONTRACT_CCNFT_SOJA} "buy(uint256, uint256)" 23000 3 $(CONFIG_SEPOLIA)
-	@cast send ${CONTRACT_CCNFT_TRIGO} "buy(uint256, uint256)" 56000 7 $(CONFIG_SEPOLIA)
+	@cast send ${CONTRACT_CCNFT_SOJA} "buy(uint256, uint256)" 23000000000000000000000 3 $(CONFIG_SEPOLIA)
+	@cast send ${CONTRACT_CCNFT_TRIGO} "buy(uint256, uint256)" 56000000000000000000000 7 $(CONFIG_SEPOLIA)

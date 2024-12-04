@@ -416,8 +416,8 @@ contract CCNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
                 Base64.encode(
                     bytes(
                         abi.encodePacked(
-                            '{"name":"',name(),'"',
-                            '"image":"',_ccnftIpfsUri,'"}'
+                            '{"name":"', name(), '"',
+                            ', "image":"', _ccnftIpfsUri, '"}'
                         )
                     )
                 )
