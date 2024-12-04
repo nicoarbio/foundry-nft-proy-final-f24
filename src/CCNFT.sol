@@ -131,6 +131,8 @@ contract CCNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
         // Verificacón del valor total después de la compra (no debe exeder el valor máximo permitido "maxValueToRaise"). Incluir un mensaje de falla.
         require(totalValue + value <= maxValueToRaise, unicode"El valor total de los NFTs excede el valor máximo permitido");
 
+        require(fundsToken.allowance(msg.sender, address(this)) >= amount, "El valor ingresado no fue aprobado en el contrato BUSD con anterioridad");
+
         totalValue += value; // Incremento del valor total acumulado por el valor de los NFTs comprados.
 
         for (uint256 i = 0; i < amount; i++) { // Bucle desde 1 hasta amount (inclusive) para mintear la cantidad especificada de NFTs.

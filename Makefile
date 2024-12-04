@@ -45,6 +45,11 @@ setFundsCollector:
 	@cast send ${CONTRACT_CCNFT_SOJA} "setFundsCollector(address)" ${FUNDS_COLLECTOR} $(CONFIG_SEPOLIA)
 	@cast send ${CONTRACT_CCNFT_TRIGO} "setFundsCollector(address)" ${FUNDS_COLLECTOR} $(CONFIG_SEPOLIA)
 
+approveFunds:
+	@echo "Approving Funds"
+	@cast send ${CONTRACT_BUSD} "approve(address, uint256)" ${CONTRACT_CCNFT_SOJA} 100000000000000000000000000 $(CONFIG_SEPOLIA)
+	@cast send ${CONTRACT_BUSD} "approve(address, uint256)" ${CONTRACT_CCNFT_TRIGO} 100000000000000000000000000 $(CONFIG_SEPOLIA)
+
 # CCNFT#buy
 buyNFT:
 	@echo "Buying NFT"

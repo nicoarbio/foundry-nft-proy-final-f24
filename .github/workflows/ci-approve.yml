@@ -1,18 +1,18 @@
-name: 07 Buy CCNFT
+name: 06 Approve contract value
 
 on:
   workflow_dispatch:
     inputs:
+      busd_contract_address:
+        description: 'BUSD Contract Address'
+        required: true
+        type: string
       ccnft_contract_address:
         description: 'CCNFT Contract Address'
         required: true
         type: string
-      nft_amount:
-        description: 'NFT Amount to buy'
-        required: true
-        type: number
-      nft_price:
-        description: 'NFT Price to buy'
+      approved_amount:
+        description: 'Amount to approve'
         required: true
         type: number
 
@@ -47,6 +47,6 @@ jobs:
         run: |
           forge --version
 
-      - name: Buy NFT
+      - name: Approve ammount
         run: |
-          cast send ${{ inputs.ccnft_contract_address }} "buy(uint256, uint256)" ${{ inputs.nft_price }} ${{ inputs.nft_amount }} $CONFIG_SEPOLIA
+          cast send ${{ inputs.busd_contract_address }} "approve(address, uint256)" ${{ inputs.ccnft_contract_address }} ${{ inputs.approved_amount }} $CONFIG_SEPOLIA
