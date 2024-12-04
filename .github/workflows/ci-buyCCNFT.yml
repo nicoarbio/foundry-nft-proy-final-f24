@@ -6,12 +6,15 @@ on:
       ccnft_contract_address:
         description: 'CCNFT Contract Address'
         required: true
+        type: string
       nft_amount:
         description: 'NFT Amount to buy'
         required: true
+        type: number
       nft_price:
         description: 'NFT Price to buy'
         required: true
+        type: number
 
 env:
   FOUNDRY_PROFILE: ci
