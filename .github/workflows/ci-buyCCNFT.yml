@@ -1,4 +1,4 @@
-name: 04 Buy CCNFT
+name: 05 Buy CCNFT
 
 on:
   workflow_dispatch:

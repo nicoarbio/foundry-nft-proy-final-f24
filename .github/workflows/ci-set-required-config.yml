@@ -1,0 +1,112 @@
+name: 04 Configure CCNF contract variables
+
+on:
+  workflow_dispatch:
+    inputs:
+      ccnft_contract_address:
+        description: 'CCNFT Contract Address'
+        required: true
+        type: string
+      profit_to_oay:
+        description: 'Profit To Pay [int]'
+        required: false
+        type: string
+      can_buy:
+        description: 'Can Buy [true/false]'
+        required: false
+        type: string
+      can_claim:
+        description: 'Can Claim [true/false]'
+        required: false
+        type: string
+      can_trade:
+        description: 'Can Trade [true/false]'
+        required: false
+        type: string
+      max_value_to_raise:
+        description: 'Max Value To Raise [int]'
+        required: false
+        type: string
+      max_batch_count:
+        description: 'Max Batch Count [int]'
+        required: false
+        type: string
+      buy_fee:
+        description: 'Buy Fee [int]'
+        required: false
+        type: string
+      trade_fee:
+        description: 'Trade Fee [int]'
+        required: false
+        type: string
+
+env:
+  FOUNDRY_PROFILE: ci
+  SEPOLIA_RPC_URL: ${{ secrets.SEPOLIA_RPC_URL }}
+  PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+  ETHERSCAN_API_KEY: ${{ secrets.ETHERSCAN_API_KEY }}
+
+jobs:
+  check:
+    strategy:
+      fail-fast: true
+
+    name: Configure CCNF contract variables
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Configure Variables CONFIG_SEPOLIA
+        run: |
+          echo "CONFIG_SEPOLIA=--rpc-url=$SEPOLIA_RPC_URL --private-key=$PRIVATE_KEY --etherscan-api-key=$ETHERSCAN_API_KEY" >> $GITHUB_ENV
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Show Forge version
+        run: |
+          forge --version
+
+      - name: Set ProfitToPay
+        if: inputs.profit_to_oay != ''
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setProfitToPay(uint32)" ${{ inputs.profit_to_oay }} $CONFIG_SEPOLIA
+
+      - name: Set CanBuy
+        if: inputs.can_buy == 'true' || inputs.can_buy == 'false' || inputs.can_buy == 'TRUE' || inputs.can_buy == 'FALSE'
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setCanBuy(bool)" ${{ inputs.can_buy }} $CONFIG_SEPOLIA
+
+      - name: Set CanClaim
+        if: inputs.can_claim == 'true' || inputs.can_claim == 'false' || inputs.can_claim == 'TRUE' || inputs.can_claim == 'FALSE'
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setCanClaim(bool)" ${{ inputs.can_claim }} $CONFIG_SEPOLIA
+
+      - name: Set CanTrade
+        if: inputs.can_trade == 'true' || inputs.can_trade == 'false' || inputs.can_trade == 'TRUE' || inputs.can_trade == 'FALSE' 
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setCanTrade(bool)" ${{ inputs.can_trade }} $CONFIG_SEPOLIA
+      
+      - name: Set MaxValueToRaise
+        if: inputs.max_value_to_raise != ''
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setMaxValueToRaise(uint256)" ${{ inputs.max_value_to_raise }} $CONFIG_SEPOLIA
+
+      - name: Set MaxBatchCount
+        if: inputs.max_batch_count != ''
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setMaxBatchCount(uint16)" ${{ inputs.max_batch_count }} $CONFIG_SEPOLIA
+
+      - name: Set BuyFee
+        if: inputs.buy_fee != ''
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setBuyFee(uint16)" ${{ inputs.buy_fee }} $CONFIG_SEPOLIA
+
+      - name: Set TradeFee
+        if: inputs.trade_fee != ''
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setTradeFee(uint16)" ${{ inputs.trade_fee }} $CONFIG_SEPOLIA

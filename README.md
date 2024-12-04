@@ -16,8 +16,9 @@ Mediante workflows de GitHub Actions, se permite interactuar con el proyecto. Se
 Entre los workflows se encuentran:
 1. Buildear y ejecutar los test unitarios
 2. Deployar los contratos utilizando los contratos desarrollados en los scripts
-3. Configurar las variables de configuración del contrato (Direcciones, fees, etc)
-4. Comprar un NFT (buyNFT al CCNFT)
+3. Configurar las direcciones requeridas al contrato CCNFT
+4. Configurar las variables de configuración del contrato (fees, etc)
+5. Comprar un NFT (buyNFT al CCNFT)
 
 ## Direcciones de contratos
 - CriptoSoja: ``
