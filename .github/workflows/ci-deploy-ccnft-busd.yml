@@ -2,6 +2,17 @@ name: 02 Deploy contracts CCNF (SOJA & TRIGO) + BUSD [Script]
 
 on:
   workflow_dispatch:
+    inputs:
+      skip_ccnft_deploy:
+        description: 'Skip CCNFTs Deploy'
+        required: false
+        type: boolean
+        default: false
+      skip_busd_deploy:
+        description: 'Skip BUSD Deploy'
+        required: false
+        type: boolean
+        default: false
 
 env:
   FOUNDRY_PROFILE: ci
@@ -49,13 +60,16 @@ jobs:
         id: test
 
       - name: Deploy CCNFT Soja
+        if: inputs.skip_ccnft_deploy != 'true' && inputs.skip_ccnft_deploy != 'TRUE'
         run: |
           forge script script/DeployCCNFT.s.sol:DeployCCNFTSoja $CONFIG_VERIFY
 
       - name: Deploy CCNFT Trigo
+        if: inputs.skip_ccnft_deploy != 'true' && inputs.skip_ccnft_deploy != 'TRUE'
         run: |
           forge script script/DeployCCNFT.s.sol:DeployCCNFTTrigo $CONFIG_VERIFY
 
       - name: Deploy ERC20 BUSD
+        if: inputs.skip_busd_deploy != 'true' && inputs.skip_busd_deploy != 'TRUE'
         run: |
           forge script script/DeployBUSD.s.sol:DeployBUSD $CONFIG_VERIFY
