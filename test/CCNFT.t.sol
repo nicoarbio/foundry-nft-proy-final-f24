@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
-import "forge-std/Test.sol";
-import "../src/BUSD.sol";
-import "../src/CCNFT.sol";
+import { Test, console } from "forge-std/Test.sol";
+import { BUSD } from "../src/BUSD.sol";
+import { CCNFT } from "../src/CCNFT.sol";
 
 // Definición del contrato de prueba CCNFTTest que hereda de Test. 
 // Declaración de direcciones y dos instancias de contratos (BUSD y CCNFT).
