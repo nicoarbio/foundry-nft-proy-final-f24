@@ -14,7 +14,7 @@ CONFIG_SEPOLIA_VERIFY := $(CONFIG_SEPOLIA) --broadcast -vvvv --verify
 # Run Unit Tests
 runtest:
 	@echo "Testing project"
-	@forge test -vvv
+	@forge test -vvv --gas-report
 
 # Deploy contracts (Script)
 deployCCNFTSoja:
