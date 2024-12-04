@@ -7,6 +7,7 @@ import { IERC20 } from "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import { Counters } from "@openzeppelin/contracts/utils/Counters.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import { ReentrancyGuard } from "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+import { Base64 } from "@openzeppelin/contracts/utils/Base64.sol";
 
 contract CCNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
 
@@ -106,12 +107,15 @@ contract CCNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
     /// @notice Porcentaje adicional a pagar en las reclamaciones.
     uint32 public profitToPay;
 
+    string private _ccnftIpfsUri;
 
     /// @notice Referencia al contrato ERC20 manejador de fondos. 
     IERC20 public fundsToken;
 
     // Constructor (nombre y símbolo del NFT).    
-    constructor(string memory name, string memory symbol) ERC721(name, symbol) {}
+    constructor(string memory name, string memory symbol, string memory ccnftIpfsUri) ERC721(name, symbol) {
+        _ccnftIpfsUri = ccnftIpfsUri;
+    }
 
     // PUBLIC FUNCTIONS
 
@@ -392,6 +396,33 @@ contract CCNFT is ERC721Enumerable, Ownable, ReentrancyGuard {
      */
     function getListTokensOnSale() external view returns(uint256[] memory) { 
         return listTokensOnSale;
+    }
+
+    function getCcnftIpfsUri() external view returns (string memory) {
+        return _ccnftIpfsUri;
+    }
+
+    function _baseURI() internal pure override returns (string memory) {
+        return "data:application/json;base64,";
+    }
+
+    function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
+        if (ownerOf(tokenId) == address(0)) {
+            revert(unicode"Token sin dueño");
+        }
+        return string(
+            abi.encodePacked(
+                _baseURI(),
+                Base64.encode(
+                    bytes(
+                        abi.encodePacked(
+                            '{"name":"',name(),'"',
+                            '"image":"',_ccnftIpfsUri,'"}'
+                        )
+                    )
+                )
+            )
+        );
     }
 
     // RECOVER FUNDS 

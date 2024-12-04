@@ -29,7 +29,7 @@ contract CCNFTTest is Test {
         funds = makeAddr("funds");
         fees = makeAddr("fees");
         busd = new BUSD();
-        ccnft = new CCNFT("CriptoSoja", "CSJ");
+        ccnft = new CCNFT("CriptoSoja", "CSJ", "");
     }
 
     /**

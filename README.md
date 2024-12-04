@@ -22,8 +22,32 @@ Entre los workflows se encuentran:
 6. Comprar un NFT (buyNFT al CCNFT)
 
 ## Direcciones de contratos
-- CriptoSoja: `0xD77D8Da5ed84C79C1c22D42FB3125E9D3315fEFE`
-- CriptoTrigo: `0x1F6D46B70070335259e93c6Ea7Bc3d268399d590`
+- CriptoSoja: ``
+- CriptoTrigo: ``
 - BUSD: `0x0d1AD9fF2116325230333190a6dE56fD96289818`
 - FeeCollector: `0x667762F969187B5c7817D6Dc92456214962d831B`
-- FundsCollector: `0x667762F969187B5c7817D6Dc92456214962d831B`
+- FundsCollector: `0x9B9856B02F542778C20fC531ffBb7e16042CFbE3`
+- Approved amount: `100000000000000000000000000`
+
+## Imagenes para NFTs
+- Soja: https://ipfs.io/ipfs/bafkreifequgryewbaqnlmgu2rjaupasvcu6ywlcbzw6kvhtaxzhqdnfeyu
+- Trigo: https://ipfs.io/ipfs/bafkreiels5trkhppfrf2tavv64hmcucohvuiyj5y2emshkwzcgoz3tg2la
+
+## Links para la entrega:
+1. Contrato CCNFT `CriptoSoja` (`CSJ`) en Etherscan: https://sepolia.etherscan.io/address/0xD77D8Da5ed84C79C1c22D42FB3125E9D3315fEFE
+    [X] Set Funds Token
+    [X] Set Funds Collector
+    [X] Set Fees Collector
+    [X] Set Can Buy
+    [X] Set Max Batch Count
+    [X] Set Buy Fee
+    [X] Set Max Value To Raise
+    [X] Add Valid Values
+    [X] Buy NFT
+2. Contrato BUSD `BUSD` (`BUSD`) en Etherscan: https://sepolia.etherscan.io/address/0x0d1AD9fF2116325230333190a6dE56fD96289818
+    [X] Approve contrato CriptoSoja por 100000000000000000000000000
+
+
+## ADJUNTAR EL ENLACE DE SEPOLIA ETHERSCAN DE LA DIRECCION DEL CONTRATO DESPLEGADO JUNTO A TODAS LAS INTERACCIONES REALIZADAS INCLUIDA LA COMPRA DEL NFT (BUY).
+## ADJUNTAR UNA CAPTURA DE PANTALLA DEL NFT "CCNFT" Y LOS TOKENS ERC20 "BUSD" IMPORTADOS A METAMASK. 
+## COMPARTIR EL ENLACE DE GITHUB QUE CONTIENE EL PROYECTO COMPLETO.
