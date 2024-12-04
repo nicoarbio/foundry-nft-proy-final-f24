@@ -1,4 +1,4 @@
-name: 06 Buy CCNFT
+name: 05 Add and/or delete valid values
 
 on:
   workflow_dispatch:
@@ -7,14 +7,15 @@ on:
         description: 'CCNFT Contract Address'
         required: true
         type: string
-      nft_amount:
-        description: 'NFT Amount to buy'
+      value:
+        description: 'Value'
         required: true
         type: number
-      nft_price:
-        description: 'NFT Price to buy'
+      action:
+        description: 'Add value [true] | Delete value [false]'
         required: true
-        type: number
+        type: boolean
+        default: true
 
 env:
   FOUNDRY_PROFILE: ci
@@ -27,7 +28,7 @@ jobs:
     strategy:
       fail-fast: true
 
-    name: Buy CCNFT
+    name: Add and/or delete valid values
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -47,6 +48,13 @@ jobs:
         run: |
           forge --version
 
-      - name: Buy NFT
+      - name: Add valid value
+        if: inputs.action == true
         run: |
-          cast send ${{ inputs.ccnft_contract_address }} "buy(uint256, uint256)" ${{ inputs.nft_price }} ${{ inputs.nft_amount }} $CONFIG_SEPOLIA
+          cast send ${{ inputs.ccnft_contract_address }} "addValidValues(uint256)" ${{ inputs.value }} $CONFIG_SEPOLIA
+
+
+      - name: Delete valid value
+        if: inputs.action == false
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "deleteValidValues(uint256)" ${{ inputs.value }} $CONFIG_SEPOLIA

@@ -18,7 +18,8 @@ Entre los workflows se encuentran:
 2. Deployar los contratos utilizando los contratos desarrollados en los scripts
 3. Configurar las direcciones requeridas al contrato CCNFT
 4. Configurar las variables de configuración del contrato (fees, etc)
-5. Comprar un NFT (buyNFT al CCNFT)
+5. Agregar o eliminar un valor válido para el contrato CCNFT
+6. Comprar un NFT (buyNFT al CCNFT)
 
 ## Direcciones de contratos
 - CriptoSoja: `0xD77D8Da5ed84C79C1c22D42FB3125E9D3315fEFE`
