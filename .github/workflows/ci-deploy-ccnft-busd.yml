@@ -3,16 +3,16 @@ name: 02 Deploy contracts CCNF (SOJA & TRIGO) + BUSD [Script]
 on:
   workflow_dispatch:
     inputs:
-      skip_ccnft_deploy:
-        description: 'Skip CCNFTs Deploy'
-        required: false
+      deploy_ccnft_contracts:
+        description: 'Deploy CCNFTs Contracts'
+        required: true
         type: boolean
-        default: false
-      skip_busd_deploy:
-        description: 'Skip BUSD Deploy'
-        required: false
+        default: true
+      deploy_busd_contract:
+        description: 'Deploy BUSD Contract'
+        required: true
         type: boolean
-        default: false
+        default: true
 
 env:
   FOUNDRY_PROFILE: ci
@@ -38,7 +38,7 @@ jobs:
 
       - name: Configure Variables CONFIG_VERIFY
         run: |
-          echo "CONFIG_VERIFY=$CONFIG_SEPOLIA --broadcast -vvvv --verify --delay 8" >> $GITHUB_ENV
+          echo "CONFIG_VERIFY=$CONFIG_SEPOLIA --broadcast -vvvv --verify --delay 10" >> $GITHUB_ENV
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1
@@ -60,16 +60,16 @@ jobs:
         id: test
 
       - name: Deploy CCNFT Soja
-        if: inputs.skip_ccnft_deploy != 'true' && inputs.skip_ccnft_deploy != 'TRUE'
+        if: inputs.deploy_ccnft_contracts
         run: |
           forge script script/DeployCCNFT.s.sol:DeployCCNFTSoja $CONFIG_VERIFY
 
       - name: Deploy CCNFT Trigo
-        if: inputs.skip_ccnft_deploy != 'true' && inputs.skip_ccnft_deploy != 'TRUE'
+        if: inputs.deploy_ccnft_contracts
         run: |
           forge script script/DeployCCNFT.s.sol:DeployCCNFTTrigo $CONFIG_VERIFY
 
       - name: Deploy ERC20 BUSD
-        if: inputs.skip_busd_deploy != 'true' && inputs.skip_busd_deploy != 'TRUE'
+        if: inputs.deploy_busd_contract
         run: |
           forge script script/DeployBUSD.s.sol:DeployBUSD $CONFIG_VERIFY
