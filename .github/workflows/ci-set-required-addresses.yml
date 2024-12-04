@@ -1,0 +1,54 @@
+name: 03 Set required addresses in CCNF contract
+
+on:
+  workflow_dispatch:
+    inputs:
+      ccnft_contract_address:
+        description: 'CCNFT Contract Address'
+        required: true
+      busd_contract_address:
+        description: 'BUSD Contract Address'
+        required: true
+      fees_collector_address:
+        description: 'Fees Collector Address'
+        required: true
+      funds_collector_address:
+        description: 'Funds Collector Address'
+        required: true
+
+env:
+  FOUNDRY_PROFILE: ci
+  CONFIG_SEPOLIA: "--rpc-url ${{ secrets.SEPOLIA_RPC_URL }} --private-key ${{ secrets.PRIVATE_KEY }} -etherscan-api-key ${{ secrets.ETHERSCAN_API_KEY }}"
+
+jobs:
+  check:
+    strategy:
+      fail-fast: true
+
+    name: Set required addresses in CCNF contract
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Show Forge version
+        run: |
+          forge --version
+
+      - name: Set FundsToken Address in CCNFT Contract
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setFundsToken(address)" ${{ inputs.busd_contract_address }} $CONFIG_SEPOLIA
+
+      - name: Set FeesCollector Address in CCNFT Contract
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setFeesCollector(address)" ${{ inputs.fees_collector_address }} $CONFIG_SEPOLIA
+
+      - name: Set FundsCollector Address in CCNFT Contract
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "setFundsCollector(address)" ${{ inputs.funds_collector_address }} $CONFIG_SEPOLIA

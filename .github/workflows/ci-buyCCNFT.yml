@@ -1,0 +1,43 @@
+name: 04 Buy CCNFT
+
+on:
+  workflow_dispatch:
+    inputs:
+      ccnft_contract_address:
+        description: 'CCNFT Contract Address'
+        required: true
+      nft_amount:
+        description: 'NFT Amount to buy'
+        required: true
+      nft_price:
+        description: 'NFT Price to buy'
+        required: true
+
+env:
+  FOUNDRY_PROFILE: ci
+  CONFIG_SEPOLIA: "--rpc-url ${{ secrets.SEPOLIA_RPC_URL }} --private-key ${{ secrets.PRIVATE_KEY }} -etherscan-api-key ${{ secrets.ETHERSCAN_API_KEY }}"
+
+jobs:
+  check:
+    strategy:
+      fail-fast: true
+
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Show Forge version
+        run: |
+          forge --version
+
+      - name: Buy NFT
+        run: |
+          cast send ${{ inputs.ccnft_contract_address }} "buy(uint256, uint256)" ${{ inputs.nft_price }}, ${{ inputs.nft_amount }} $CONFIG_SEPOLIA

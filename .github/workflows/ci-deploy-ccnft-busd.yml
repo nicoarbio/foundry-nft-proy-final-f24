@@ -1,0 +1,52 @@
+name: 02 Deploy contracts CCNF (SOJA & TRIGO) + BUSD [Script]
+
+on:
+  workflow_dispatch:
+
+env:
+  FOUNDRY_PROFILE: ci
+  CONFIG_SEPOLIA: "--rpc-url ${{ secrets.SEPOLIA_RPC_URL }} --private-key ${{ secrets.PRIVATE_KEY }} -etherscan-api-key ${{ secrets.ETHERSCAN_API_KEY }}"
+  CONFIG_VERIFY: "--broadcast -vvvv --verify"
+
+jobs:
+  check:
+    strategy:
+      fail-fast: true
+
+    name: Deploy contracts CCNF (SOJA & TRIGO) + BUSD [Script]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Show Forge version
+        run: |
+          forge --version
+
+      - name: Run Forge build
+        run: |
+          forge build --sizes
+        id: build
+
+      - name: Run Forge tests
+        run: |
+          forge test -vvv
+        id: test
+
+      - name: Deploy CCNFT Soja
+        run: |
+          forge script script/DeployCCNFT.s.sol:DeployCCNFTSoja $CONFIG_SEPOLIA $CONFIG_VERIFY
+
+      - name: Deploy CCNFT Trigo
+        run: |
+          forge script script/DeployCCNFT.s.sol:DeployCCNFTTrigo $CONFIG_SEPOLIA $CONFIG_VERIFY
+
+      - name: Deploy ERC20 BUSD
+        run: |
+          forge script script/DeployBUSD.s.sol:DeployBUSD $CONFIG_SEPOLIA $CONFIG_VERIFY
