@@ -27,7 +27,7 @@ jobs:
 
       - name: Configure Variables CONFIG_VERIFY
         run: |
-          echo "CONFIG_VERIFY=$CONFIG_SEPOLIA --broadcast -vvvv --verify" >> $GITHUB_ENV
+          echo "CONFIG_VERIFY=$CONFIG_SEPOLIA --broadcast -vvvv --verify --delay 8" >> $GITHUB_ENV
 
       - name: Install Foundry
         uses: foundry-rs/foundry-toolchain@v1

@@ -9,7 +9,7 @@ FUNDS_COLLECTOR := 0x667762F969187B5c7817D6Dc92456214962d831B
 
 # Para especificar los detalles de red y clave privada
 CONFIG_SEPOLIA := --rpc-url $(SEPOLIA_RPC_URL) --private-key $(PRIVATE_KEY) -etherscan-api-key $(ETHERSCAN_API_KEY)
-CONFIG_SEPOLIA_VERIFY := $(CONFIG_SEPOLIA) --broadcast -vvvv --verify
+CONFIG_SEPOLIA_VERIFY := $(CONFIG_SEPOLIA) --broadcast -vvvv --verify --delay 8
 
 # Run Unit Tests
 runtest:
