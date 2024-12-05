@@ -22,10 +22,32 @@ Entre los workflows se encuentran:
 6. Aprobar en el contrato BUSD el valor a utilizar por CCNFT
 7. Comprar un NFT (buyNFT al CCNFT)
 
+## Links para la entrega:
+1. Contrato CCNFT `CriptoSoja` (`CSJ`) en Etherscan: https://sepolia.etherscan.io/address/0x921993C6084386e4a66583e304Ed52022B39caEb
+    - [X] Set Funds Token (`0x1F8A487F7b158230612a713Fc2cCe5D43b9a0081`)
+    - [X] Set Funds Collector (`0x9B9856B02F542778C20fC531ffBb7e16042CFbE3`)
+    - [X] Set Fees Collector (`0x667762F969187B5c7817D6Dc92456214962d831B`)
+    - [X] Set Can Buy (`true`)
+    - [X] Set Max Value To Raise (`100000000000000000000000000`)
+    - [X] Set Max Batch Count (`10`)
+    - [X] Set Buy Fee (`15`)
+    - [X] Add Valid Values (`23000000000000000000000`)
+    - [X] Approve CCNFT in BUSD (`0x1F8A487F7b158230612a713Fc2cCe5D43b9a0081`, `100000000000000000000000000`)
+    - [X] Buy NFT (`23000000000000000000000`, `3`)
+2. Contrato BUSD `BUSD` (`BUSD`) en Etherscan: https://sepolia.etherscan.io/address/0x1F8A487F7b158230612a713Fc2cCe5D43b9a0081
+    - [X] Approve contrato CriptoSoja por 100000000000000000000000000
+3. NFT CriptoSoja en Metamask:
+    ![NFT CriptoSoja en Metamask](./logs-github-actions/NFTs%20in%20account%200x667762F969187B5c7817D6Dc92456214962d831B.png)
+4. BUSD en Metamask:
+    ![BUSD en Metamask](./logs-github-actions/BUSD%20in%20account%200x667762F969187B5c7817D6Dc92456214962d831B.png)
+4. BUSD en Metamask (cuenta FundsCollector):
+    ![BUSD en Metamask - cuenta FundsCollector](./logs-github-actions/BUSD%20in%20FundsCollector%20account%200x9B9856B02F542778C20fC531ffBb7e16042CFbE3.png)
+5. Repositorio de GitHub: https://github.com/nicoarbio/foundry-nft-proy-final-f24
+
 ## Direcciones de contratos
-- CriptoSoja: ``
-- CriptoTrigo: ``
-- BUSD: ``
+- CriptoSoja: `0x921993C6084386e4a66583e304Ed52022B39caEb`
+- CriptoTrigo: `0x34Ee50052A2B8554443342F1C3EF84ebF2682587`
+- BUSD: `0x1F8A487F7b158230612a713Fc2cCe5D43b9a0081`
 - FundsCollector: `0x9B9856B02F542778C20fC531ffBb7e16042CFbE3`
 - FeesCollector: `0x667762F969187B5c7817D6Dc92456214962d831B`
 - Approved amount: `100000000000000000000000000`
@@ -33,24 +55,5 @@ Entre los workflows se encuentran:
 ## Imagenes para NFTs
 - Soja: https://ipfs.io/ipfs/bafkreifequgryewbaqnlmgu2rjaupasvcu6ywlcbzw6kvhtaxzhqdnfeyu
 - Trigo: https://ipfs.io/ipfs/bafkreiels5trkhppfrf2tavv64hmcucohvuiyj5y2emshkwzcgoz3tg2la
-
-## Links para la entrega:
-1. Contrato CCNFT `CriptoSoja` (`CSJ`) en Etherscan: https://sepolia.etherscan.io/address/0x1704b67D73CC665bA12cE6D597328305743cf3f6
-    - [X] Set Funds Token
-    - [X] Set Funds Collector
-    - [X] Set Fees Collector
-    - [X] Set Can Buy
-    - [X] Set Max Batch Count
-    - [X] Set Buy Fee
-    - [X] Set Max Value To Raise
-    - [X] Add Valid Values
-    - [X] Buy NFT
-2. Contrato BUSD `BUSD` (`BUSD`) en Etherscan: https://sepolia.etherscan.io/address/0x0d1AD9fF2116325230333190a6dE56fD96289818
-    - [X] Approve contrato CriptoSoja por 100000000000000000000000000
-
-
-## ADJUNTAR EL ENLACE DE SEPOLIA ETHERSCAN DE LA DIRECCION DEL CONTRATO DESPLEGADO JUNTO A TODAS LAS INTERACCIONES REALIZADAS INCLUIDA LA COMPRA DEL NFT (BUY).
-## ADJUNTAR UNA CAPTURA DE PANTALLA DEL NFT "CCNFT" Y LOS TOKENS ERC20 "BUSD" IMPORTADOS A METAMASK. 
-## COMPARTIR EL ENLACE DE GITHUB QUE CONTIENE EL PROYECTO COMPLETO.
 
 > Faucet Sepolia Google Cloud Web3: https://cloud.google.com/application/web3/faucet/ethereum/sepolia
