@@ -22,7 +22,7 @@ Entre los workflows se encuentran:
 6. Aprobar en el contrato BUSD el valor a utilizar por CCNFT
 7. Comprar un NFT (buyNFT al CCNFT)
 
-## Links para la entrega:
+## Checklist:
 1. Contrato CCNFT `CriptoSoja` (`CSJ`) en Etherscan: https://sepolia.etherscan.io/address/0x921993C6084386e4a66583e304Ed52022B39caEb
     - [X] Set Funds Token (`0x1F8A487F7b158230612a713Fc2cCe5D43b9a0081`)
     - [X] Set Funds Collector (`0x9B9856B02F542778C20fC531ffBb7e16042CFbE3`)
@@ -36,13 +36,6 @@ Entre los workflows se encuentran:
     - [X] Buy NFT (`23000000000000000000000`, `3`)
 2. Contrato BUSD `BUSD` (`BUSD`) en Etherscan: https://sepolia.etherscan.io/address/0x1F8A487F7b158230612a713Fc2cCe5D43b9a0081
     - [X] Approve contrato CriptoSoja por 100000000000000000000000000
-3. NFT CriptoSoja en Metamask:
-    ![NFT CriptoSoja en Metamask](./logs-github-actions/NFTs%20in%20account%200x667762F969187B5c7817D6Dc92456214962d831B.png)
-4. BUSD en Metamask:
-    ![BUSD en Metamask](./logs-github-actions/BUSD%20in%20account%200x667762F969187B5c7817D6Dc92456214962d831B.png)
-4. BUSD en Metamask (cuenta FundsCollector):
-    ![BUSD en Metamask - cuenta FundsCollector](./logs-github-actions/BUSD%20in%20FundsCollector%20account%200x9B9856B02F542778C20fC531ffBb7e16042CFbE3.png)
-5. Repositorio de GitHub: https://github.com/nicoarbio/foundry-nft-proy-final-f24
 
 ## Direcciones de contratos
 - CriptoSoja: `0x921993C6084386e4a66583e304Ed52022B39caEb`
@@ -53,7 +46,34 @@ Entre los workflows se encuentran:
 - Approved amount: `100000000000000000000000000`
 
 ## Imagenes para NFTs
+Se implementó en el IPFS Piñata las imágenes de los NFTs:
 - Soja: https://ipfs.io/ipfs/bafkreifequgryewbaqnlmgu2rjaupasvcu6ywlcbzw6kvhtaxzhqdnfeyu
 - Trigo: https://ipfs.io/ipfs/bafkreiels5trkhppfrf2tavv64hmcucohvuiyj5y2emshkwzcgoz3tg2la
 
 > Faucet Sepolia Google Cloud Web3: https://cloud.google.com/application/web3/faucet/ethereum/sepolia
+
+## Entrega
+### Repositorio de GitHub (Se creó el TAG ENTREGA-1.0.0)
+https://github.com/nicoarbio/foundry-nft-proy-final-f24/tree/ENTREGA-1.0.0
+
+> [!IMPORTANT]
+> Dentro del repositorio en la carpeta "logs-github-actions" se puede ver el log de ejecución de todas las instrucciones requeridas para implementar este proyecto.
+
+### Contratos
+- Contato CCNFT (CriptoSoja): https://sepolia.etherscan.io/address/0x921993C6084386e4a66583e304Ed52022B39caEb
+- Contrato CCNFT (CriptoTrigo): https://sepolia.etherscan.io/address/0x34Ee50052A2B8554443342F1C3EF84ebF2682587
+- Contrato BUSD: https://sepolia.etherscan.io/address/0x1F8A487F7b158230612a713Fc2cCe5D43b9a0081
+
+### Addresses billeteras
+- Address owner de los contratos y NFTs (también del FeeCollector): https://sepolia.etherscan.io/address/0x667762F969187B5c7817D6Dc92456214962d831B
+- Address para el FundsCollector: https://sepolia.etherscan.io/address/0x9B9856B02F542778C20fC531ffBb7e16042CFbE3
+
+### Capturas de pantalla Metamask
+- NFTs en la cuenta 0x667762F969187B5c7817D6Dc92456214962d831B en Metamask:
+    	    ![NFT CriptoSoja en Metamask](./logs-github-actions/NFTs%20in%20account%200x667762F969187B5c7817D6Dc92456214962d831B.png)
+
+- BUSD en la cuenta 0x667762F969187B5c7817D6Dc92456214962d831B en Metamask:
+            ![BUSD en Metamask](./logs-github-actions/BUSD%20in%20account%200x667762F969187B5c7817D6Dc92456214962d831B.png)
+
+- BUSD recolectados como FundsCollector en otra cuenta 0x9B9856B02F542778C20fC531ffBb7e16042CFbE3 en Metamask:
+            ![BUSD en Metamask - cuenta FundsCollector](./logs-github-actions/BUSD%20in%20FundsCollector%20account%200x9B9856B02F542778C20fC531ffBb7e16042CFbE3.png)
